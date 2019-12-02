@@ -1,7 +1,12 @@
 import math
 
 def getFuelRequired(mass):
-    return math.floor(mass / 3) - 2
+    result = math.floor(mass / 3) - 2
+    if result > 0:
+        result += getFuelRequired(result)
+    else:
+        result = 0
+    return result
 
 input_file = open("input", "r")
 result = 0
