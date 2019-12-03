@@ -24,7 +24,7 @@ int main() {
       ++array_size;
     }
   }
-  int array[array_size];
+  int original_array[array_size];
 
   // Convert the strings into integers
   int starting_position_number = 0;
@@ -35,32 +35,54 @@ int main() {
       strncpy(number, buffer + starting_position_number,
               index - (starting_position_number));
       starting_position_number = ++index;
-      array[current_number++] = atoi(number);
+      original_array[current_number++] = atoi(number);
       memset(number, 0, 10);
     }
   }
   strncpy(number, buffer + starting_position_number,
           buffer_size - (starting_position_number));
-  array[current_number++] = atoi(number);
+  original_array[current_number++] = atoi(number);
+  int array[array_size];
 
-  // Replace values with the ones previous to damage
-  array[1] = 12;
-  array[2] = 2;
+  // Guess the new values by replacing and testing
+  int i, j;
+  for (i = 0; i < 100; ++i) {
+    for (j = 0; j < 100; ++j) {
+      memcpy(array, original_array, array_size * sizeof(int));
+      array[1] = i;
+      array[2] = j;
 
-  // Calculate the new values of the arrays
-  for (index = 0; index < array_size; index += 4) {
-    switch (array[index]) {
-    case 1:
-      array[array[index + 3]] =
-          array[array[index + 1]] + array[array[index + 2]];
-      break;
-    case 2:
-      array[array[index + 3]] =
-          array[array[index + 1]] * array[array[index + 2]];
-      break;
-    case 99:
-      printf("%d\n", array[0]);
-      return 0;
+      // Calculate the new values of the arrays
+      for (index = 0; index < array_size; index += 4) {
+        int instruction = array[index];
+        int address1 = array[index + 1];
+        int address2 = array[index + 2];
+        int result_address = array[index + 3];
+        if (address1 > array_size || address2 > array_size ||
+            result_address > array_size) {
+          break;
+        }
+        if (instruction == 1) {
+          array[result_address] = array[address1] + array[address2];
+        } else if (instruction == 2) {
+          array[result_address] = array[address1] * array[address2];
+        } else if (instruction == 99) {
+          if (array[0] == 19690720) {
+            if (i < 10) {
+              printf("0");
+            }
+            printf("%d", i);
+            if (j < 10) {
+              printf("0");
+            }
+            printf("%d\n", j);
+            return 0;
+          }
+          break;
+        } else {
+          break;
+        }
+      }
     }
   }
 
