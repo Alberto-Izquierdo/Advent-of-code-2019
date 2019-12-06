@@ -1,0 +1,12 @@
+addons:
+  apt:
+    packages:
+      - gcc
+      - libcmocka-dev
+
+script:
+  - cd day_5/part_1
+  - ./build_main.sh
+  - ./build_tests.sh
+  - ./test
+  - cd ../..
