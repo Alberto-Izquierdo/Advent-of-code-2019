@@ -10,3 +10,8 @@ script:
   - ./build_tests.sh
   - ./test
   - cd ../..
+  - cd day_5/part_2
+  - ./build_main.sh
+  - ./build_tests.sh
+  - ./test
+  - cd ../..
