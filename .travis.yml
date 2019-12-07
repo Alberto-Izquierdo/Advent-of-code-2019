@@ -3,6 +3,7 @@ addons:
     packages:
       - gcc
       - libcmocka-dev
+      - maven
 
 script:
   - cd day_5/part_1
@@ -14,4 +15,7 @@ script:
   - ./build_main.sh
   - ./build_tests.sh
   - ./test
+  - cd ../..
+  - cd day_6/puzzle_1
+  - mvn package
   - cd ../..
