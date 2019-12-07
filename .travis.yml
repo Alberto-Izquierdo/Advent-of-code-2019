@@ -18,4 +18,6 @@ script:
   - cd ../..
   - cd day_6/puzzle_1
   - mvn package
+  - cd ../puzzle_2
+  - mvn package
   - cd ../..
