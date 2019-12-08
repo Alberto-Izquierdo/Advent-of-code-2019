@@ -4,6 +4,7 @@ addons:
       - gcc
       - libcmocka-dev
       - maven
+      - python-logilab-common
 
 script:
   - cd day_5/part_1
@@ -20,4 +21,7 @@ script:
   - mvn package
   - cd ../puzzle_2
   - mvn package
+  - cd ../..
+  - cd day_7/puzzle_1
+  - pytest test.py
   - cd ../..
