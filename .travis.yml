@@ -25,7 +25,11 @@ script:
   - cd day_7/puzzle_1
   - pytest test.py
   - cd ../..
-  - cd day_8/part_1
+  - cd day_8/puzzle_1
+  - ./build_main.sh
+  - ./build_tests.sh
+  - ./test
+  - cd ../puzzle_2
   - ./build_main.sh
   - ./build_tests.sh
   - ./test
