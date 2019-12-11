@@ -34,3 +34,6 @@ script:
   - ./build_tests.sh
   - ./test
   - cd ../..
+  - cd day_10/puzzle_1
+  - mvn package
+  - cd ../..

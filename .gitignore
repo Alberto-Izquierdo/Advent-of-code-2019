@@ -1,2 +1,7 @@
 main
 test
+__pycache__
+.settings
+target
+bin
+.project
