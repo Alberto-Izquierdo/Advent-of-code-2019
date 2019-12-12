@@ -36,4 +36,6 @@ script:
   - cd ../..
   - cd day_10/puzzle_1
   - mvn package
+  - cd ../puzzle_2
+  - mvn package
   - cd ../..
