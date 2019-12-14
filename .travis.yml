@@ -39,3 +39,7 @@ script:
   - cd ../puzzle_2
   - mvn package
   - cd ../..
+  - cd day_12/puzzle_1
+  - pytest test.py
+  - python3 main.py
+  - cd ../..
